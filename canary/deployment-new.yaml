@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: gcr.io/cloud-solutions-images/app:new
+          image: gcr.io/instructor-partition/od-maskrcnn
           livenessProbe:
              httpGet:
                 path: /version
@@ -37,6 +37,6 @@ spec:
           lifecycle:
              preStop:
                 exec:
-                   command: ["/bin/bash", "-c", "sleep 5"]
+                   command: ["python3", "/opt/app_mask1.py", "serve"]
           ports:
             - containerPort: 8080
